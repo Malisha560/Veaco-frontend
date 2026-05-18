@@ -2,7 +2,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import SalesInvoice from "./pages/SalesInvoice";
 import CustomerDetails from "./pages/CustomerDetails";
-
+import Vendors from "./pages/Vendors";
+import CustomerSearch from "./pages/CustomerSearch";
 import "./index.css";
 function App() {
     return (
@@ -26,6 +27,11 @@ function App() {
             </div>
         </BrowserRouter>
     );
-}
+    <Route path="/vendors" element={<Vendors />} />
+
+<Route
+  path="/customer-search"
+  element={<CustomerSearch />}
+/>
 
 export default App;
