@@ -1,29 +1,35 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-import SalesInvoice from "./pages/SalesInvoice";
-import CustomerDetails from "./pages/CustomerDetails";
+import LandingPage from "./pages/LandingPage";
+import CustomerRegister from "./pages/CustomerRegister";
+import StaffLogin from "./pages/StaffLogin";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 
 import "./index.css";
+
 function App() {
     return (
         <BrowserRouter>
-            <div className="app">
-                <aside className="sidebar">
-                    <h2>Veaco</h2>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
 
-                    <Link to="/">Sales</Link>
-                    <Link to="/customer">Customer</Link>
-                    
-                </aside>
+                <Route path="/customer-register" element={<CustomerRegister />} />
+                <Route path="/staff-login" element={<StaffLogin />} />
+                <Route path="/admin-login" element={<AdminLogin />} />
 
-                <main className="content">
-                    <Routes>
-                        <Route path="/" element={<SalesInvoice />} />
-                        <Route path="/customer" element={<CustomerDetails />} />
-                        
-                    </Routes>
-                </main>
-            </div>
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedAdminRoute>
+                            <AdminDashboard />
+                        </ProtectedAdminRoute>
+                    }
+                />
+
+                <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
         </BrowserRouter>
     );
 }

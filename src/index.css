@@ -1,84 +1,67 @@
-/* RESET */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: Inter, sans-serif;
 }
 
-/* LAYOUT */
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: #eef4ea;
+    color: #1f2d20;
+}
+
 .app {
     display: flex;
-    height: 100vh;
-    background: #f5f7fb;
+    min-height: 100vh;
+    background: #f6fbf2;
 }
 
-/* SIDEBAR */
 .sidebar {
-    width: 220px;
-    background: #0f172a;
-    color: white;
-    padding: 20px;
+    width: 240px;
+    background: #f4faef;
+    border-right: 1px solid #dfe8d9;
+    padding: 30px 22px;
+}
+
+.brand {
+    display: flex;
+}
+
+.brand-logo {
+    width: 170px;
+    height: auto;
+    object-fit: contain;
 }
 
 .sidebar h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin: 0;
+    font-size: 22px;
+    color: #203320;
 }
 
-/* LINKS */
+.sidebar-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #899684;
+    margin-bottom: 18px;
+}
+
 .sidebar a {
     display: block;
-    padding: 10px 12px;
-    margin-bottom: 6px;
-    border-radius: 8px;
-    color: #94a3b8;
     text-decoration: none;
-    font-size: 14px;
+    color: #5f6f5d;
+    padding: 13px 16px;
+    margin-bottom: 8px;
+    border-radius: 20px;
+    font-size: 15px;
 }
 
 .sidebar a:hover {
-    background: #1e293b;
-    color: white;
+    background: #e5efdf;
+    color: #2f5d35;
 }
 
-/* MAIN CONTENT */
 .content {
     flex: 1;
-    padding: 40px;
-}
-
-/* COMMON UI */
-h1 {
-    font-size: 26px;
-    margin-bottom: 20px;
-}
-
-input {
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-}
-
-button {
-    padding: 10px 16px;
-    border: none;
-    background: #2563eb;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #1d4ed8;
-}
-
-/* ERROR */
-.error {
-    margin-top: 15px;
-    padding: 10px;
-    background: #fee2e2;
-    color: #b91c1c;
-    border-radius: 6px;
+    padding: 42px 50px;
 }
