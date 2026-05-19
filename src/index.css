@@ -3,50 +3,87 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Inter, sans-serif;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+html, body, #root {
+    height: 100%;
 }
 
 /* LAYOUT */
 .app {
     display: flex;
     height: 100vh;
-    background: #f5f7fb;
-}
-
-/* SIDEBAR */
-.sidebar {
-    width: 220px;
-    background: #0f172a;
-    color: white;
-    padding: 20px;
-}
-
-.sidebar h2 {
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-/* LINKS */
-.sidebar a {
-    display: block;
-    padding: 10px 12px;
-    margin-bottom: 6px;
-    border-radius: 8px;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.sidebar a:hover {
-    background: #1e293b;
-    color: white;
+    background: #f1f5f9;
 }
 
 /* MAIN CONTENT */
 .content {
     flex: 1;
     padding: 40px;
+    overflow-y: auto;
+    background: #f1f5f9;
 }
+
+/* GENERAL STYLES */
+section {
+    max-width: 1200px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+}
+
+p {
+    color: #475569;
+    line-height: 1.6;
+}
+
+a {
+    color: #4f46e5;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #4338ca;
+}
+
+/* SCROLLBAR STYLES */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .content {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 16px;
+    }
+}
+
 
 /* COMMON UI */
 h1 {

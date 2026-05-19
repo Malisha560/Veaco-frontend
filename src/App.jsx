@@ -1,26 +1,33 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-import SalesInvoice from "./pages/SalesInvoice";
-import CustomerDetails from "./pages/CustomerDetails";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import StaffRegisterPage from "./pages/StaffRegisterPage";
+import SalesInvoicePage from "./pages/SalesInvoicePage";
+import CustomerLookupPage from "./pages/CustomerLookupPage";
+import SelfRegisterPage from "./pages/SelfRegisterPage";
+import ManageProfilePage from "./pages/ManageProfilePage";
+import BookAppointmentPage from "./pages/BookAppointmentPage";
+import PartRequestPage from "./pages/PartRequestPage";
+import ServiceReviewPage from "./pages/ServiceReviewPage";
+import HistoryPage from "./pages/HistoryPage";
 import "./index.css";
+
 function App() {
     return (
         <BrowserRouter>
             <div className="app">
-                <aside className="sidebar">
-                    <h2>Veaco</h2>
-
-                    <Link to="/">Sales</Link>
-                    <Link to="/customer">Customer</Link>
-                    
-                </aside>
-
+                <Sidebar />
                 <main className="content">
                     <Routes>
-                        <Route path="/" element={<SalesInvoice />} />
-                        <Route path="/customer" element={<CustomerDetails />} />
-                        
+                        <Route path="/staff-register" element={<StaffRegisterPage />} />
+                        <Route path="/sales" element={<SalesInvoicePage />} />
+                        <Route path="/customer-lookup" element={<CustomerLookupPage />} />
+                        <Route path="/self-register" element={<SelfRegisterPage />} />
+                        <Route path="/manage-profile" element={<ManageProfilePage />} />
+                        <Route path="/book-appointment" element={<BookAppointmentPage />} />
+                        <Route path="/part-request" element={<PartRequestPage />} />
+                        <Route path="/service-review" element={<ServiceReviewPage />} />
+                        <Route path="/history" element={<HistoryPage />} />
+                        <Route path="/" element={<StaffRegisterPage />} />
                     </Routes>
                 </main>
             </div>
