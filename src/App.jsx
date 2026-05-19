@@ -21,6 +21,8 @@ import PartRequestPage from "./pages/customer/PartRequestPage";
 import ServiceReviewPage from "./pages/customer/ServiceReviewPage";
 import HistoryPage from "./pages/customer/HistoryPage";
 
+import Vendors from "./pages/Vendors";
+import CustomerSearch from "./pages/CustomerSearch";
 import "./index.css";
 
 function DashboardLayout({ children }) {
@@ -75,6 +77,14 @@ function App() {
                     element={
                         <DashboardLayout>
                             <CustomerReports />
+                        </DashboardLayout>
+                    }
+                />
+                <Route
+                    path="/staff/customer-search"
+                    element={
+                        <DashboardLayout>
+                            <CustomerSearch />
                         </DashboardLayout>
                     }
                 />
@@ -134,12 +144,19 @@ function App() {
                         </ProtectedAdminRoute>
                     }
                 />
+                <Route
+                    path="/admin/vendors"
+                    element={
+                        <DashboardLayout>
+                            <Vendors />
+                        </DashboardLayout>
+                    }
+                />
 
                 <Route path="*" element={<Navigate to="/" />} />
 
             </Routes>
         </BrowserRouter>
     );
-}
 
 export default App;
