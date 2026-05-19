@@ -1,0 +1,19 @@
+/* Book Appointment Feature 13 */
+/* Shared styles with staff-register, can extend or import as needed */
+@import './staff-register.css';
+
+.select-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.select-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}

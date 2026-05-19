@@ -1,10 +1,16 @@
 * {
     box-sizing: border-box;
+    font-family: Inter, Arial, sans-serif;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
 }
 
 body {
     margin: 0;
-    font-family: Inter, Arial, sans-serif;
     background: #eef4ea;
     color: #1f2d20;
 }
@@ -16,14 +22,18 @@ body {
 }
 
 .sidebar {
-    width: 240px;
+    width: 250px;
     background: #f4faef;
     border-right: 1px solid #dfe8d9;
-    padding: 30px 22px;
+    padding: 28px 22px;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .brand {
     display: flex;
+    align-items: center;
+    margin-bottom: 34px;
 }
 
 .brand-logo {
@@ -32,28 +42,30 @@ body {
     object-fit: contain;
 }
 
-.sidebar h2 {
-    margin: 0;
-    font-size: 22px;
-    color: #203320;
+.nav-group {
+    margin-bottom: 24px;
 }
 
 .sidebar-label {
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     color: #899684;
-    margin-bottom: 18px;
+    margin: 0 0 14px;
+}
+
+.sidebar-label-gap {
+    margin-top: 28px;
 }
 
 .sidebar a {
     display: block;
     text-decoration: none;
     color: #5f6f5d;
-    padding: 13px 16px;
-    margin-bottom: 8px;
-    border-radius: 20px;
-    font-size: 15px;
+    padding: 12px 14px;
+    margin-bottom: 7px;
+    border-radius: 18px;
+    font-size: 14px;
 }
 
 .sidebar a:hover {
@@ -64,4 +76,58 @@ body {
 .content {
     flex: 1;
     padding: 42px 50px;
+    overflow-y: auto;
+}
+
+/* General page defaults */
+section {
+    max-width: 1200px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #1f2d20;
+}
+
+p {
+    color: #536250;
+    line-height: 1.6;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* Error */
+.error {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fee2e2;
+    color: #b91c1c;
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .content {
+        padding: 24px;
+    }
 }

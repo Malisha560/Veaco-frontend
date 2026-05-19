@@ -1,0 +1,37 @@
+/* History Feature 14 */
+/* Shared styles with staff-register, can extend or import as needed */
+@import './staff-register.css';
+
+.appointment-box {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    border-left: 4px solid #0284c7;
+}
+
+.appt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.appt-header b {
+    color: #0f172a;
+}
+
+.appt-status {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.appt-date,
+.appt-vehicle {
+    font-size: 13px;
+    color: #475569;
+    margin: 4px 0;
+}
