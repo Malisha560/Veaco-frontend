@@ -1,23 +1,25 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LandingPage from "./pages/LandingPage";
-import StaffLogin from "./pages/StaffLogin";
-import AdminLogin from "./pages/AdminLogin";
+import LoginPage from "./pages/LoginPage";
+
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
+
 
 import Sidebar from "./Sidebar";
 
 import StaffRegisterPage from "./pages/StaffRegisterPage";
 import SalesInvoicePage from "./pages/SalesInvoicePage";
 import CustomerLookupPage from "./pages/CustomerLookupPage";
+import CustomerReports from "./pages/staff/CustomerReports";
 
 import SelfRegisterPage from "./pages/SelfRegisterPage";
-import ManageProfilePage from "./pages/ManageProfilePage";
-import BookAppointmentPage from "./pages/BookAppointmentPage";
-import PartRequestPage from "./pages/PartRequestPage";
-import ServiceReviewPage from "./pages/ServiceReviewPage";
-import HistoryPage from "./pages/HistoryPage";
+import ManageProfilePage from "./pages/customer/ManageProfilePage";
+import BookAppointmentPage from "./pages/customer/BookAppointmentPage";
+import PartRequestPage from "./pages/customer/PartRequestPage";
+import ServiceReviewPage from "./pages/customer/ServiceReviewPage";
+import HistoryPage from "./pages/customer/HistoryPage";
 
 import "./index.css";
 
@@ -38,8 +40,8 @@ function App() {
                 {/* Public pages */}
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/customer-register" element={<SelfRegisterPage />} />
-                <Route path="/staff-login" element={<StaffLogin />} />
-                <Route path="/admin-login" element={<AdminLogin />} />
+                <Route path="/login" element={<LoginPage />} />
+                
 
                 {/* Staff pages */}
                 <Route
@@ -65,6 +67,14 @@ function App() {
                     element={
                         <DashboardLayout>
                             <CustomerLookupPage />
+                        </DashboardLayout>
+                    }
+                />
+                <Route
+                    path="/staff/customer-reports"
+                    element={
+                        <DashboardLayout>
+                            <CustomerReports />
                         </DashboardLayout>
                     }
                 />

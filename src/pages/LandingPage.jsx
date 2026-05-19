@@ -1,26 +1,41 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/veaco-logo.png";
+import logo from "../assets/logo.png";
 import "../styles/landing.css";
 
 function LandingPage() {
     return (
         <div className="landing-page">
-
             <nav className="landing-nav">
+                <div className="nav-spacer"></div>
+
                 <div className="landing-brand">
                     <img src={logo} alt="Veaco Logo" />
                 </div>
 
-                <div className="landing-links">
-                    <a href="#">Features</a>
-                    <a href="#">Services</a>
-                    <a href="#">Contact</a>
-                </div>
+                <div className="nav-spacer"></div>
             </nav>
 
             <section className="hero-section">
-
                 <div className="hero-left">
+                    <div className="dashboard-preview">
+                        <div className="preview-card">
+                            <h3>Service Management</h3>
+                            <p>Organise appointments, vehicle records and service updates in one place.</p>
+                        </div>
+
+                        <div className="preview-card">
+                            <h3>Parts Inventory</h3>
+                            <p>Track vehicle parts, stock levels and purchase records easily.</p>
+                        </div>
+
+                        <div className="preview-card">
+                            <h3>Billing & Reports</h3>
+                            <p>Create invoices and view simple reports for daily workshop operations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="hero-right">
                     <p className="hero-badge">
                         Vehicle Parts & Service Management
                     </p>
@@ -41,36 +56,11 @@ function LandingPage() {
                             Customer Register
                         </Link>
 
-                        <Link to="/customer-login" className="secondary-btn">
-                            Customer Login
+                        <Link to="/login" className="secondary-btn">
+                            Login
                         </Link>
                     </div>
                 </div>
-
-                <div className="hero-right">
-                    <div className="dashboard-preview">
-
-                        <div className="preview-card">
-                            <h3>Invoices Today</h3>
-                            <h1>42</h1>
-                            <p>+12% from yesterday</p>
-                        </div>
-
-                        <div className="preview-card">
-                            <h3>Revenue</h3>
-                            <h1>$14,280</h1>
-                            <p>Monthly overview</p>
-                        </div>
-
-                        <div className="preview-card">
-                            <h3>Low Stock Parts</h3>
-                            <h1>8</h1>
-                            <p>Need restocking</p>
-                        </div>
-
-                    </div>
-                </div>
-
             </section>
         </div>
     );

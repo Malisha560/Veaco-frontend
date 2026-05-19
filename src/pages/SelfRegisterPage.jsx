@@ -1,13 +1,26 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/self-register.css";
 
 const API_BASE = "http://localhost:5285";
 
 function SelfRegisterPage() {
-    const [form, setForm] = useState({ fullName: "", phone: "", email: "" });
-    const [vehicle, setVehicle] = useState({ vehicleNumber: "", brand: "", model: "" });
+    const [form, setForm] = useState({
+        fullName: "",
+        phone: "",
+        email: "",
+        password: "",
+    });
+
+    const [vehicle, setVehicle] = useState({
+        vehicleNumber: "",
+        brand: "",
+        model: "",
+    });
+
     const [addVehicle, setAddVehicle] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
 
@@ -18,11 +31,13 @@ function SelfRegisterPage() {
         e.preventDefault();
         setError("");
         setResult(null);
+
         try {
             const payload = {
                 ...form,
                 vehicle: addVehicle && vehicle.vehicleNumber ? vehicle : null,
             };
+
             const res = await axios.post(`${API_BASE}/api/customers/self-register`, payload);
             setResult(res.data);
         } catch (err) {
@@ -31,94 +46,129 @@ function SelfRegisterPage() {
     };
 
     return (
-        <section>
-            <div className="page-header">
-                <span className="feature-badge customer-badge">Feature 12 · Customer</span>
-                <h1>Customer Self-Registration</h1>
-                <p className="subtitle">New customers can register and add their vehicle information.</p>
+        <div className="register-page">
+            <div className="register-left">
+                <span className="register-badge">Customer Access</span>
+                <h1>Create your Veaco account</h1>
+                <p>
+                    Register your details and add your vehicle information to manage
+                    appointments, requests, reviews, and service history.
+                </p>
             </div>
 
-            <form className="card" onSubmit={handleSubmit}>
-                <h3 className="card-title">Your Details</h3>
-                <label>Full Name</label>
-                <input
-                    name="fullName"
-                    value={form.fullName}
-                    onChange={set(setForm)}
-                    placeholder="Your full name"
-                    required
-                />
-                <label>Phone</label>
-                <input
-                    name="phone"
-                    value={form.phone}
-                    onChange={set(setForm)}
-                    placeholder="Your phone number"
-                    required
-                />
-                <label>Email</label>
-                <input
-                    name="email"
-                    value={form.email}
-                    onChange={set(setForm)}
-                    placeholder="Your email"
-                    required
-                />
+            <div className="register-card">
+                <form onSubmit={handleSubmit}>
+                    <Link to="/" className="back-home-btn">
+                         Back to Home
+                    </Link>
+                    <h2>Your Details</h2>
 
-                <div className="toggle-row">
-                    <label className="toggle-label">
+                    <label>Full Name</label>
+                    <input
+                        name="fullName"
+                        value={form.fullName}
+                        onChange={set(setForm)}
+                        placeholder="Enter full name"
+                        required
+                    />
+
+                    <label>Phone</label>
+                    <input
+                        name="phone"
+                        value={form.phone}
+                        onChange={set(setForm)}
+                        placeholder="Enter phone number"
+                        required
+                    />
+
+                    <label>Email</label>
+                    <input
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={set(setForm)}
+                        placeholder="Enter email address"
+                        required
+                    />
+
+                    <label>Password</label>
+                    <div className="password-field">
+                        <input
+                            name="password"
+                            type={showPassword ? "text" : "password"}
+                            value={form.password}
+                            onChange={set(setForm)}
+                            placeholder="Create password"
+                            required
+                        />
+                        <button type="button" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? "Hide" : "Show"}
+                        </button>
+                    </div>
+
+                    <label className="checkbox-row">
                         <input
                             type="checkbox"
                             checked={addVehicle}
                             onChange={() => setAddVehicle(!addVehicle)}
                         />
-                        &nbsp; Add My Vehicle
+                        Add my vehicle
                     </label>
-                </div>
 
-                {addVehicle && (
-                    <div className="nested-card">
-                        <h4>Vehicle Details</h4>
-                        <label>Vehicle Number</label>
-                        <input
-                            name="vehicleNumber"
-                            value={vehicle.vehicleNumber}
-                            onChange={set(setVehicle)}
-                            placeholder="e.g. BA 1 PA 1234"
-                        />
-                        <label>Brand</label>
-                        <input
-                            name="brand"
-                            value={vehicle.brand}
-                            onChange={set(setVehicle)}
-                            placeholder="e.g. Toyota"
-                        />
-                        <label>Model</label>
-                        <input
-                            name="model"
-                            value={vehicle.model}
-                            onChange={set(setVehicle)}
-                            placeholder="e.g. Vigo"
-                        />
+                    {addVehicle && (
+                        <div className="vehicle-box">
+                            <h3>Vehicle Details</h3>
+
+                            <label>Vehicle Number</label>
+                            <input
+                                name="vehicleNumber"
+                                value={vehicle.vehicleNumber}
+                                onChange={set(setVehicle)}
+                                placeholder="e.g. BA 1 PA 1234"
+                            />
+
+                            <label>Brand</label>
+                            <input
+                                name="brand"
+                                value={vehicle.brand}
+                                onChange={set(setVehicle)}
+                                placeholder="e.g. Suzuki"
+                            />
+
+                            <label>Model</label>
+                            <input
+                                name="model"
+                                value={vehicle.model}
+                                onChange={set(setVehicle)}
+                                placeholder="e.g. Avenis"
+                            />
+                        </div>
+                    )}
+
+                    <button type="submit" className="register-btn">Create Account</button>
+
+                    <p className="auth-link">
+                       Already Have an Account? <Link to="/login">Login Now</Link>
+                    </p>
+                </form>
+
+                {error && <div className="register-error">{String(error)}</div>}
+
+                {result && (
+                    <div className="register-success">
+                        <h3>Registration successful</h3>
+                        <p>{result.message}</p>
+                        <p>
+                            <b>Customer ID:</b> {result.customerId}
+                        </p>
+
+                        <Link to="/login" className="login-redirect-btn">
+                            Continue to Login
+                        </Link>
                     </div>
                 )}
-
-                <button type="submit" className="btn-primary">
-                    Register
-                </button>
-            </form>
-
-            {error && <div className="error">{String(error)}</div>}
-            {result && (
-                <div className="card success">
-                    <h3>✓ Welcome to Veaco!</h3>
-                    <p>{result.message}</p>
-                    <p>
-                        <b>Your Customer ID:</b> {result.customerId} — save this for future use.
-                    </p>
-                </div>
-            )}
-        </section>
+            </div>
+        </div>
     );
 }
 

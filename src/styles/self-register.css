@@ -1,3 +1,176 @@
-/* Self Register Feature 12 */
-/* Shared styles with staff-register, can extend or import as needed */
-@import './staff-register.css';
+.register-page {
+    min-height: 100vh;
+    background: #f6fbf2;
+    display: grid;
+    grid-template-columns: 1fr 520px;
+    gap: 50px;
+    padding: 70px;
+    color: #1f2d20;
+}
+
+.register-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-badge {
+    width: fit-content;
+    background: #dcead6;
+    color: #4f7c54;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.register-left h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    margin: 0 0 24px;
+}
+
+.register-left p {
+    max-width: 540px;
+    font-size: 18px;
+    color: #657465;
+}
+
+.register-card {
+    background: #fbfff8;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 10px 30px rgba(55, 75, 55, 0.08);
+}
+
+.register-card h2 {
+    margin-top: 0;
+}
+
+.register-card label {
+    display: block;
+    margin: 16px 0 8px;
+    color: #536250;
+    font-weight: 700;
+}
+
+.register-card input {
+    width: 100%;
+    border: none;
+    background: #e8f1e3;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+}
+
+.password-field {
+    display: flex;
+    gap: 10px;
+}
+
+.password-field input {
+    flex: 1;
+}
+
+.password-field button {
+    border: none;
+    background: #dcead6;
+    color: #355b39;
+    padding: 0 18px;
+    border-radius: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.checkbox-row {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-row input {
+    width: auto;
+}
+
+.vehicle-box {
+    margin-top: 18px;
+    background: #f1f7ed;
+    padding: 22px;
+    border-radius: 22px;
+}
+
+.vehicle-box h3 {
+    margin-top: 0;
+}
+
+.register-btn,
+.login-redirect-btn {
+    display: inline-block;
+    width: 100%;
+    margin-top: 24px;
+    border: none;
+    background: #638d63;
+    color: white;
+    padding: 15px;
+    border-radius: 22px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-btn:hover,
+.login-redirect-btn:hover {
+    background: #557c55;
+}
+
+.register-error {
+    margin-top: 18px;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 14px;
+    border-radius: 16px;
+}
+
+.register-success {
+    margin-top: 22px;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.register-success p {
+    color: #065f46;
+}
+
+@media (max-width: 900px) {
+    .register-page {
+        grid-template-columns: 1fr;
+        padding: 30px;
+    }
+
+    .register-left h1 {
+        font-size: 42px;
+    }
+}
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    text-decoration: none;
+
+    color: #5b6a5a;
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 24px;
+
+    transition: 0.2s ease;
+}
+
+.back-home-btn:hover {
+    color: #355e3b;
+}

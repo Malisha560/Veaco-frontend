@@ -15,27 +15,6 @@
     margin: 0;
 }
 
-.feature-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.feature-badge.staff-badge {
-    background: #e0e7ff;
-    color: #4f46e5;
-}
-
-.feature-badge.customer-badge {
-    background: #dbeafe;
-    color: #0284c7;
-}
-
 .card {
     background: white;
     border: 1px solid #e2e8f0;

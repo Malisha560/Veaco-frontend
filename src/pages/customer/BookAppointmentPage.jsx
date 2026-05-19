@@ -1,34 +1,69 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/book-appointment.css";
+import "../../styles/book-appointment.css";
 
 const API_BASE = "http://localhost:5285";
 
 function BookAppointmentPage() {
+    const customerId = localStorage.getItem("customerId");
+
+    const [vehicles, setVehicles] = useState([]);
     const [form, setForm] = useState({
-        customerId: "",
         vehicleId: "",
         appointmentDate: "",
         serviceDescription: "",
     });
+
     const [result, setResult] = useState(null);
     const [error, setError] = useState("");
 
-    const set = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const set = (e) =>
+        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+    useEffect(() => {
+        const loadCustomerVehicles = async () => {
+            if (!customerId) {
+                setError("Customer session not found. Please login again.");
+                return;
+            }
+
+            try {
+                const res = await axios.get(`${API_BASE}/api/customers/${customerId}/details`);
+                setVehicles(res.data.vehicles || []);
+            } catch {
+                setError("Could not load your vehicles.");
+            }
+        };
+
+        loadCustomerVehicles();
+    }, [customerId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
         setResult(null);
+
+        if (!customerId) {
+            setError("Customer session not found. Please login again.");
+            return;
+        }
+
         try {
             const payload = {
-                customerId: Number(form.customerId),
+                customerId: Number(customerId),
                 vehicleId: form.vehicleId ? Number(form.vehicleId) : null,
                 appointmentDate: new Date(form.appointmentDate).toISOString(),
                 serviceDescription: form.serviceDescription,
             };
+
             const res = await axios.post(`${API_BASE}/api/appointments`, payload);
             setResult(res.data);
+
+            setForm({
+                vehicleId: "",
+                appointmentDate: "",
+                serviceDescription: "",
+            });
         } catch (err) {
             setError(err.response?.data || "Failed to book appointment.");
         }
@@ -37,28 +72,28 @@ function BookAppointmentPage() {
     return (
         <section>
             <div className="page-header">
-                <span className="feature-badge customer-badge">Feature 13 · Customer</span>
+               
                 <h1>Book Appointment</h1>
                 <p className="subtitle">Schedule a service appointment for your vehicle.</p>
             </div>
 
             <form className="card" onSubmit={handleSubmit}>
                 <h3 className="card-title">Appointment Details</h3>
-                <label>Customer ID</label>
-                <input
-                    name="customerId"
-                    value={form.customerId}
-                    onChange={set}
-                    placeholder="Your customer ID"
-                    required
-                />
-                <label>Vehicle ID (optional)</label>
-                <input
+
+                <label>Vehicle</label>
+                <select
                     name="vehicleId"
                     value={form.vehicleId}
                     onChange={set}
-                    placeholder="Leave blank if not applicable"
-                />
+                >
+                    <option value="">No vehicle selected</option>
+                    {vehicles.map((vehicle) => (
+                        <option key={vehicle.id} value={vehicle.id}>
+                            {vehicle.vehicleNumber} — {vehicle.brand} {vehicle.model}
+                        </option>
+                    ))}
+                </select>
+
                 <label>Appointment Date & Time</label>
                 <input
                     name="appointmentDate"
@@ -67,7 +102,8 @@ function BookAppointmentPage() {
                     onChange={set}
                     required
                 />
-                <label>Service Description</label>
+
+                <label>Service Description *</label>
                 <textarea
                     name="serviceDescription"
                     value={form.serviceDescription}
@@ -76,15 +112,17 @@ function BookAppointmentPage() {
                     rows={3}
                     required
                 />
+
                 <button type="submit" className="btn-primary">
                     Book Appointment
                 </button>
             </form>
 
             {error && <div className="error">{String(error)}</div>}
+
             {result && (
                 <div className="card success">
-                    <h3>✓ Appointment Booked!</h3>
+                    <h3>Appointment Booked</h3>
                     <p>
                         <b>Appointment ID:</b> {result.appointmentId}
                     </p>
