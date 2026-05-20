@@ -1,158 +1,171 @@
 import { useState } from "react";
 import { createPurchase } from "../../services/api";
-
+import "../../styles/purchase.css"
 export default function Purchase() {
-	const [items, setItems] = useState([]);
-	const [submittedItems, setSubmittedItems] = useState([]);
-	const [item, setItem] = useState({
-		partId: "",
-		quantity: "",
-		price: ""
-	});
-	const [error, setError] = useState("");
-	const [success, setSuccess] = useState("");
+    const [items, setItems] = useState([]);
+    const [submittedItems, setSubmittedItems] = useState([]);
+    const [item, setItem] = useState({
+        partId: "",
+        quantity: "",
+        price: ""
+    });
 
-	const handleChange = (e) => {
-		setItem({ ...item, [e.target.name]: e.target.value });
-	};
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
-	const addItem = () => {
-		if (!item.partId || !item.quantity || !item.price) {
-			setError("Please fill in all fields.");
-			return;
-		}
+    const handleChange = (e) => {
+        setItem({ ...item, [e.target.name]: e.target.value });
+    };
 
-		setItems([...items, item]);
-		setItem({ partId: "", quantity: "", price: "" });
-		setError("");
-		setSuccess("");
-	};
+    const addItem = () => {
+        if (!item.partId || !item.quantity || !item.price) {
+            setError("Please fill in all fields.");
+            return;
+        }
 
-	const submitInvoice = async () => {
-		if (items.length === 0) {
-			setError("Please add at least one item.");
-			return;
-		}
+        setItems([...items, item]);
+        setItem({ partId: "", quantity: "", price: "" });
+        setError("");
+        setSuccess("");
+    };
 
-		const invoice = {
-			vendorId: 1,
-			items: items.map(i => ({
-				partId: parseInt(i.partId),
-				quantity: parseInt(i.quantity),
-				price: parseFloat(i.price)
-			}))
-		};
+    const submitInvoice = async () => {
+        if (items.length === 0) {
+            setError("Please add at least one item.");
+            return;
+        }
 
-		try {
-			await createPurchase(invoice);
+        const purchaseItems = items.map((i) => ({
+            partId: parseInt(i.partId),
+            quantity: parseInt(i.quantity),
+            price: parseFloat(i.price)
+        }));
 
-			setSubmittedItems(items);
-			setItems([]);
+        try {
+            await createPurchase(purchaseItems);
 
-			setSuccess("Purchase Invoice Created Successfully");
-			setError("");
+            setSubmittedItems(items);
+            setItems([]);
 
-		} catch (err) {
-			setError("Error creating invoice");
-			console.error(err);
-		}
-	};
+            setSuccess("Purchase Invoice Created Successfully");
+            setError("");
+        } catch (err) {
+            setError(err.message || "Error creating invoice");
+            console.error(err);
+        }
+    };
 
-	const colStyle = {
-		display: "flex",
-		padding: "6px 0"
-	};
+    return (
+        <div className="page-content">
+            <div className="page-date">Purchase Management</div>
+            <h1 className="page-title">Purchase Invoice</h1>
+            <p className="page-subtitle">Create purchase invoices and update stock records.</p>
 
-	const cellStyle = {
-		width: "120px"
-	};
+            {error && <p className="msg-error">{error}</p>}
+            {success && <p className="msg-success">{success}</p>}
 
-	return (
-		<div style={{ padding: "20px", fontFamily: "Arial" }}>
+            <div className="form-box">
+                <h3 className="form-box-title">Add Purchase Item</h3>
 
-			<h2 style={{ marginBottom: "20px" }}>
-				Purchase Invoice
-			</h2>
+                <div className="form-grid">
+                    <div className="form-field">
+                        <label className="form-label">Part ID</label>
+                        <input
+                            name="partId"
+                            placeholder="Enter part ID"
+                            value={item.partId}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-			{error && <p style={{ color: "red" }}>{error}</p>}
+                    <div className="form-field">
+                        <label className="form-label">Quantity</label>
+                        <input
+                            name="quantity"
+                            placeholder="Enter quantity"
+                            value={item.quantity}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-			{/* INPUT */}
-			<div style={{ marginBottom: "25px", display: "flex", gap: "10px" }}>
-				<input
-					name="partId"
-					placeholder="Part ID"
-					value={item.partId}
-					onChange={handleChange}
-				/>
-				<input
-					name="quantity"
-					placeholder="Quantity"
-					value={item.quantity}
-					onChange={handleChange}
-				/>
-				<input
-					name="price"
-					placeholder="Price"
-					value={item.price}
-					onChange={handleChange}
-				/>
+                    <div className="form-field">
+                        <label className="form-label">Price</label>
+                        <input
+                            name="price"
+                            placeholder="Enter price"
+                            value={item.price}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
 
-				<button onClick={addItem}>Add Item</button>
-			</div>
+                <div className="form-actions">
+                    <button className="btn btn-primary" onClick={addItem}>
+                        Add Item
+                    </button>
+                </div>
+            </div>
 
-			{/* ================= CURRENT ITEMS ================= */}
-			<h3 style={{ marginTop: "10px", marginBottom: "10px" }}>
-				Items
-			</h3>
+            <div className="table-wrapper">
+                <div className="table-header-row">
+                    <h3 className="table-header-title">Items</h3>
+                </div>
 
-			<div style={{ ...colStyle, fontWeight: "bold", borderBottom: "1px solid #ccc" }}>
-				<span style={cellStyle}>Part ID</span>
-				<span style={cellStyle}>Quantity</span>
-				<span style={cellStyle}>Price</span>
-			</div>
+                <div className="items-header">
+                    <span>Part ID</span>
+                    <span>Quantity</span>
+                    <span>Price</span>
+                    <span></span>
+                </div>
 
-			{items.map((i, index) => (
-				<div key={index} style={colStyle}>
-					<span style={cellStyle}>{i.partId}</span>
-					<span style={cellStyle}>{i.quantity}</span>
-					<span style={cellStyle}>{i.price}</span>
-				</div>
-			))}
+                {items.length > 0 ? (
+                    items.map((i, index) => (
+                        <div className="items-row" key={index}>
+                            <span>{i.partId}</span>
+                            <span>{i.quantity}</span>
+                            <span>Rs. {i.price}</span>
+                            <button
+                                className="remove-item-btn"
+                                onClick={() => setItems(items.filter((_, idx) => idx !== index))}
+                            >
+                                ×
+                            </button>
+                        </div>
+                    ))
+                ) : (
+                    <div className="table-empty">No items added</div>
+                )}
 
-			{/* SUBMIT */}
-			<div style={{ marginTop: "25px" }}>
-				<button onClick={submitInvoice}>
-					Submit Invoice
-				</button>
-			</div>
+                <div className="submit-row">
+                    <button className="btn btn-primary" onClick={submitInvoice}>
+                        Submit Invoice
+                    </button>
+                </div>
+            </div>
 
-			{/* ================= SUCCESS ================= */}
-			{success && (
-				<div style={{ marginTop: "40px" }}>
+            {success && submittedItems.length > 0 && (
+                <div className="table-wrapper" style={{ marginTop: "28px" }}>
+                    <div className="table-header-row">
+                        <h3 className="table-header-title">Invoice Summary</h3>
+                    </div>
 
-					<h3 style={{ color: "green", marginBottom: "15px" }}>
-						{success}
-					</h3>
+                    <div className="items-header">
+                        <span>Part ID</span>
+                        <span>Quantity</span>
+                        <span>Price</span>
+                        <span></span>
+                    </div>
 
-					<h4 style={{ marginBottom: "10px" }}>
-						Invoice Summary
-					</h4>
-
-					<div style={{ ...colStyle, fontWeight: "bold", borderBottom: "1px solid #ccc" }}>
-						<span style={cellStyle}>Part ID</span>
-						<span style={cellStyle}>Quantity</span>
-						<span style={cellStyle}>Price</span>
-					</div>
-
-					{submittedItems.map((i, index) => (
-						<div key={index} style={colStyle}>
-							<span style={cellStyle}>{i.partId}</span>
-							<span style={cellStyle}>{i.quantity}</span>
-							<span style={cellStyle}>{i.price}</span>
-						</div>
-					))}
-				</div>
-			)}
-		</div>
-	);
+                    {submittedItems.map((i, index) => (
+                        <div className="items-row" key={index}>
+                            <span>{i.partId}</span>
+                            <span>{i.quantity}</span>
+                            <span>Rs. {i.price}</span>
+                            <span></span>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 }

@@ -1,29 +1,34 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/sidebar.css";
+import logo from "../../assets/logo.png";
 
 const Sidebar = () => {
     const navigate = useNavigate();
 
     const menuItems = [
-        { name: "Dashboard", path: "/dashboard" },
-        { name: "Customers", path: "/customers" },
-        { name: "Reports", path: "/reports" },
-        { name: "Staff", path: "/staff" },
+        { name: "Dashboard", path: "/admin/dashboard" },
+        { name: "Parts", path: "/admin/parts" },
+        { name: "Vendors", path: "/admin/vendors" },
+        { name: "Purchase", path: "/admin/purchase" },
+        { name: "Reports", path: "/admin/reports" },
+        { name: "Staff", path: "/admin/staff" },
     ];
 
     const handleLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        navigate("/");
+        navigate("/admin");
     };
 
     // Get logged in user name
     const user = JSON.parse(localStorage.getItem("user") || "{}");
 
     return (
-        <aside className="sidebar">
+        <aside className="admin-sidebar">
             <div>
-                <h1 className="sidebar-logo">Veaco</h1>
+                <div className="brand">
+                    <img src={logo} alt="Veaco logo" className="brand-logo" />
+                </div>
 
                 <nav className="sidebar-menu">
                     {menuItems.map((item) => (
@@ -40,15 +45,6 @@ const Sidebar = () => {
 
             {/* User info + logout at the bottom */}
             <div className="sidebar-footer">
-                <div className="sidebar-user">
-                    <div className="sidebar-avatar">
-                        {user.fullName?.charAt(0) || "A"}
-                    </div>
-                    <div>
-                        <p className="sidebar-user-name">{user.fullName || "Admin"}</p>
-                        <p className="sidebar-user-role">{user.role || "Admin"}</p>
-                    </div>
-                </div>
                 <button className="sidebar-logout" onClick={handleLogout}>
                     Logout
                 </button>

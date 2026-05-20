@@ -6,7 +6,7 @@ const api = axios.create({
     baseURL: BASE_URL,
 });
 
-// ---------- AUTH ----------
+// auth
 export const loginUser = async (data) => {
     const response = await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
@@ -21,7 +21,7 @@ export const loginUser = async (data) => {
     return response.json();
 };
 
-// ---------- CUSTOMER ----------
+// customer
 export const getCustomerDetails = async (id) => {
     const res = await fetch(`${BASE_URL}/customers/${id}/details`);
     return res.json();
@@ -32,7 +32,7 @@ export const searchCustomers = async (query) => {
     return res.json();
 };
 
-// ---------- INVOICE / SALES ----------
+// sales invoice
 export const createInvoice = async (data) => {
     const res = await fetch(`${BASE_URL}/sales/create-invoice`, {
         method: "POST",
@@ -43,7 +43,7 @@ export const createInvoice = async (data) => {
     return res.json();
 };
 
-// ---------- PARTS ----------
+// parts
 export const getParts = async () => {
     const res = await fetch(`${BASE_URL}/parts`);
     return res.json();
@@ -59,18 +59,43 @@ export const addPart = async (part) => {
     return res.json();
 };
 
-// ---------- PURCHASE ----------
-export const createPurchase = async (invoice) => {
-    const res = await fetch(`${BASE_URL}/purchase`, {
+export const updatePart = async (id, part) => {
+    const res = await fetch(`${BASE_URL}/parts/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(part),
+    });
+
+    if (!res.ok) throw new Error("Failed to update part.");
+    return res.json();
+};
+
+export const deletePart = async (id) => {
+    const res = await fetch(`${BASE_URL}/parts/${id}`, {
+        method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Failed to delete part.");
+    return res.json();
+};
+
+// purchase
+export const createPurchase = async (items) => {
+    const res = await fetch(`${BASE_URL}/purchase/items`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(invoice),
+        body: JSON.stringify(items),
     });
+
+    if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text);
+    }
 
     return res.json();
 };
 
-// ---------- VENDORS ----------
+// vendors
 export const getVendors = async () => {
     const res = await fetch(`${BASE_URL}/vendors`);
     return res.json();
@@ -104,7 +129,7 @@ export const deleteVendor = async (id) => {
     return res.json();
 };
 
-// ---------- ADMIN REPORTS ----------
+// admin reports
 export const getDailyReport = (date) =>
     api.get(`/admin/reports/daily?date=${date}`);
 
@@ -120,7 +145,7 @@ export const getReportSummary = () =>
 export const getNotificationSummary = () =>
     api.get("/notifications/summary");
 
-// ---------- STAFF MANAGEMENT ----------
+// staff management
 export const getAllStaff = () =>
     api.get("/admin/staff");
 

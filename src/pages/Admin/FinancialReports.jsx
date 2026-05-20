@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getDailyReport, getMonthlyReport, getYearlyReport, getReportSummary } from "../services/api";
-import "../styles/reports.css";
+import { getDailyReport, getMonthlyReport, getYearlyReport, getReportSummary } from "../../services/api";
+import "../../styles/reports.css";
 
 function FinancialReports() {
     const [activeTab, setActiveTab] = useState("daily");

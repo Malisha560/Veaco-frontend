@@ -1,37 +1,67 @@
-/* History Feature 14 */
-/* Shared styles with staff-register, can extend or import as needed */
 @import './staff-register.css';
 
+.invoice-box,
 .appointment-box {
-    background: #f8fafc;
-    padding: 12px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    border-left: 4px solid #0284c7;
+    background: #ffffff;
+    border: 1px solid #edf3e8;
+    border-left: 5px solid #587f5b;
+    border-radius: 18px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 22px rgba(38, 68, 43, 0.06);
 }
 
+.invoice-header,
 .appt-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
 }
 
+.invoice-header b,
 .appt-header b {
-    color: #0f172a;
+    color: #1f2d20;
+    font-size: 16px;
+}
+
+.invoice-date,
+.appt-date,
+.appt-vehicle,
+.invoice-item {
+    color: #536452;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.invoice-totals {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid #edf3e8;
+
+    color: #1f2d20;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.discount {
+    color: #b45309;
+}
+
+.grand-total {
+    color: #36523a;
+    font-weight: 800;
 }
 
 .appt-status {
     font-size: 12px;
-    font-weight: 600;
-    padding: 4px 8px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.05);
+    font-weight: 800;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: #eef6e9;
 }
 
-.appt-date,
-.appt-vehicle {
-    font-size: 13px;
-    color: #475569;
-    margin: 4px 0;
+.appointment-box p {
+    color: #536452;
+    margin: 8px 0;
 }

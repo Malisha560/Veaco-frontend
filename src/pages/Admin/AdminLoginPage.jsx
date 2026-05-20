@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/login.css";
+import "../../styles/login.css";
 
-export default function Login() {
+export default function AdminLoginPage() {
     const navigate = useNavigate();
-    const [form, setForm] = useState({ email: "", password: "" });
+
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });
+
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+    const handleChange = (e) => {
+        setForm((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -25,16 +35,21 @@ export default function Login() {
             const data = await res.json();
 
             if (!res.ok) {
-                setError(data.message || "Invalid credentials.");
+                setError(data.message || data.Message || "Invalid credentials.");
                 return;
             }
 
-            // Save the token and user info to localStorage
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("user", JSON.stringify(data.staff));
+            if (data.user.role !== "Admin") {
+                setError("Only admin users can access this portal.");
+                return;
+            }
 
-            // Redirect to dashboard
-            navigate("/dashboard");
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
+            localStorage.setItem("role", data.user.role);
+            localStorage.setItem("adminLoggedIn", "true");
+
+            navigate("/admin/dashboard");
         } catch {
             setError("Could not connect to server. Make sure backend is running.");
         } finally {
@@ -44,7 +59,6 @@ export default function Login() {
 
     return (
         <div className="login-page">
-
             <div className="login-right">
                 <div className="login-card">
                     <h2>Welcome back</h2>
@@ -60,10 +74,11 @@ export default function Login() {
                                 type="email"
                                 value={form.email}
                                 onChange={handleChange}
-                                placeholder="e.g. somethinghehe@gmail.com"
+                                placeholder="admin@example.com"
                                 required
                             />
                         </div>
+
                         <div className="login-form-group">
                             <label>Password</label>
                             <input
@@ -75,6 +90,7 @@ export default function Login() {
                                 required
                             />
                         </div>
+
                         <button type="submit" className="login-btn" disabled={loading}>
                             {loading ? "Signing in..." : "Sign In"}
                         </button>

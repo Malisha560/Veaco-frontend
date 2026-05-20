@@ -244,21 +244,10 @@ function ManageProfilePage() {
                                             </span>
 
                                             <div className="btn-row">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => startEditVehicle(v)}
-                                                    className="btn-ghost btn-sm"
-                                                >
-                                                    Edit
-                                                </button>
-
-                                                <button
-                                                    type="button"
-                                                    onClick={() => deleteVehicle(v.id)}
-                                                    className="btn-danger btn-sm"
-                                                >
-                                                    Remove
-                                                </button>
+                                                <div className="vehicle-actions">
+                                                    <button>Edit</button>
+                                                    <button className="btn-danger">Remove</button>
+                                                </div>
                                             </div>
                                         </div>
                                     )}

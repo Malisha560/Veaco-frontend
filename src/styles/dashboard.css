@@ -376,3 +376,33 @@
         grid-template-columns: 1fr;
     }
 }
+
+.bell-btn {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.bell-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.bell-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getStaff, registerStaff, updateStaff, deleteStaff } from "../services/api";
-import "../styles/staff.css";
+import { getStaff, registerStaff, updateStaff, deleteStaff } from "../../services/api";
+import "../../styles/staff.css";
 
 function StaffManagement() {
     const [staffList, setStaffList] = useState([]);

@@ -37,7 +37,7 @@ function LoginPage() {
 
             if (data.user.role === "Admin") {
                 localStorage.setItem("adminLoggedIn", "true");
-                navigate("/admin");
+                navigate("/admin/dashboard");
             } else if (data.user.role === "Staff") {
                 navigate("/staff/register-customer");
             } else if (data.user.role === "Customer") {

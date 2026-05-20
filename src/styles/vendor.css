@@ -1,0 +1,329 @@
+/* ── PAGE ── */
+
+.page-content {
+    max-width: 980px;
+    padding: 28px 34px;
+    margin: 0 auto;
+}
+
+.page-date {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    line-height: 1.1;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: #6b6b6b;
+    margin-bottom: 28px;
+}
+
+/* ── MESSAGES ── */
+.msg-error {
+    background: #fdf0ef;
+    border: 1px solid #f5c6c2;
+    border-radius: var(--radius-md);
+    color: var(--danger);
+    padding: 10px 14px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.loading-text {
+    color: var(--text-muted);
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+/* ── FORM ── */
+.form-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    margin-bottom: 24px;
+}
+
+.form-box-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+    margin-bottom: 18px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.form-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ── INPUTS ── */
+input {
+    font-family: var(--font-body);
+    height: 42px;
+    font-size: 14px;
+    color: var(--text-primary);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0 12px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+input::placeholder {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--text-primary);
+    background: #fff;
+}
+
+/* ── BUTTONS ── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s, color 0.15s, opacity 0.15s;
+    white-space: nowrap;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #2d2d2d;
+    color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1a1a1a;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--bg-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+}
+
+.btn-ghost:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+.btn-danger {
+    background: transparent;
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.btn-danger:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-sm {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+/* ── TABLE ── */
+.table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.table-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.table-header-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+table.veaco-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.veaco-table thead tr {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+}
+
+table.veaco-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+}
+
+table.veaco-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+table.veaco-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table.veaco-table tbody tr:hover td {
+    background: var(--bg);
+}
+
+.table-empty {
+    text-align: center;
+    padding: 26px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.action-cell {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal-box {
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    padding: 26px;
+    width: 420px;
+    max-width: 94vw;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.modal-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+.modal-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.modal-detail-row:last-child {
+    border-bottom: none;
+}
+
+.modal-detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+.modal-detail-value {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 22px;
+    }
+
+    .page-title {
+        font-size: 34px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+}

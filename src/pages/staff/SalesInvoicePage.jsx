@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "../styles/sales-invoice.css";
+import "../../styles/sales-invoice.css";
 
 const API_BASE = "http://localhost:5285";
 

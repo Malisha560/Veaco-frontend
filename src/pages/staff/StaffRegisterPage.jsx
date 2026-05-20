@@ -36,7 +36,7 @@ function StaffRegisterPage() {
     return (
         <section>
             <div className="page-header">
-                <span className="feature-badge staff-badge">Feature 6 · Staff</span>
+               
                 <h1>Register New Customer</h1>
                 <p className="subtitle">Staff can register new customers and add their vehicle details.</p>
             </div>

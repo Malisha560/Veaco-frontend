@@ -1,10 +1,28 @@
-.sidebar {
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f6fbf2;
+}
+
+.admin-content {
+    flex: 1;
+    margin-left: 270px;
+    padding: 42px 50px;
+}
+.admin-sidebar {
     width: 260px;
     height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
     background-color: #EEF2EA;
     padding: 36px 20px;
+
     display: flex;
     flex-direction: column;
+
     border-right: 1px solid #E5E7EB;
 }
 
@@ -42,4 +60,22 @@
 .sidebar-link:focus-visible {
     outline: none;
     box-shadow: none;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid #d9dfd4;
+}
+
+
+
+
+.sidebar-logout {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccd6c8;
+    background: transparent;
+    cursor: pointer;
 }

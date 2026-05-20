@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getReportSummary, getNotificationSummary, getStaff, getMonthlyReport } from "../services/api";
-import "../styles/dashboard.css";
+import { getReportSummary, getNotificationSummary, getStaff, getMonthlyReport } from "../../services/api";
+import "../../styles/dashboard.css";
+import bellImage from "../../assets/notification.png";
 export default function Dashboard() {
     const navigate = useNavigate();
     const [summary, setSummary] = useState(null);
@@ -67,10 +68,10 @@ export default function Dashboard() {
 
     // Quick action navigation
     const handleQuickAction = (action) => {
-        if (action === "Register staff") navigate("/staff");
-        else if (action === "Add part") navigate("/sales");
-        else if (action === "Create purchase invoice") navigate("/sales");
-        else if (action === "Add vendor") navigate("/sales");
+        if (action === "Register staff") navigate("/admin/staff");
+        else if (action === "Add part") navigate("/admin/parts");
+        else if (action === "Create purchase invoice") navigate("/admin/purchase");
+        else if (action === "Add vendor") navigate("/admin/vendors");
     };
 
     // Chart max value for scaling bars
@@ -100,9 +101,16 @@ export default function Dashboard() {
 
                     {/* Bell notification icon */}
                     <div className="bell-wrap">
-                        <button className="bell-btn" onClick={() => setShowNotifications(!showNotifications)}>
-                            🔔
-                            {alertCount > 0 && <span className="bell-badge">{alertCount}</span>}
+                        <button
+                            className="bell-btn"
+                            onClick={() => setShowNotifications(!showNotifications)}
+                        >
+
+                            <img src={bellImage} alt="Notifications" className="bell-icon" />
+
+                            {alertCount > 0 && (
+                                <span className="bell-badge">{alertCount}</span>
+                            )}
                         </button>
 
                         {showNotifications && (
@@ -114,7 +122,7 @@ export default function Dashboard() {
                                 {alertCount > 0 ? (
                                     notifications.lowStockItems.map((item, i) => (
                                         <div className="notif-item" key={i}>
-                                            <span className="notif-icon">⚠️</span>
+                                            
                                             <div>
                                                 <p className="notif-title">{item.partName}</p>
                                                 <p className="notif-sub">Only {item.stockQuantity} units left</p>

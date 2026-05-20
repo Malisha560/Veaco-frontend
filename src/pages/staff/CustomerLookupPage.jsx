@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../styles/customer-lookup.css";
+import "../../styles/customer-lookup.css";
 
 const API_BASE = "http://localhost:5285";
 
@@ -63,7 +63,7 @@ function CustomerLookupPage() {
     return (
         <section>
             <div className="page-header">
-                <span className="feature-badge staff-badge">Feature 8 & 10 · Staff</span>
+                
                 <h1>Customer Lookup</h1>
                 <p className="subtitle">
                     Search customers by ID, name, phone number, or vehicle number.
@@ -71,8 +71,10 @@ function CustomerLookupPage() {
             </div>
 
             <div className="card">
-                <label>Search Customer</label>
+                <label className="input-label">Search Customer</label>
+
                 <input
+                    className="search-input"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search by customer ID, name, phone, or vehicle number"
@@ -105,12 +107,7 @@ function CustomerLookupPage() {
                             )}
                         </div>
 
-                        <button
-                            className="btn-primary btn-sm"
-                            onClick={() => viewCustomer(customer.id)}
-                        >
-                            View Details
-                        </button>
+                        
                     </div>
                 ))}
             </div>
