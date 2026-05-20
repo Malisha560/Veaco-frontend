@@ -9,7 +9,7 @@ import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 
 import Sidebar from "./Sidebar";
 
-import StaffRegisterPage from "./pages/StaffRegisterPage";
+import StaffRegisterPage from "./pages/staff/StaffRegisterPage";
 import SalesInvoicePage from "./pages/SalesInvoicePage";
 import CustomerLookupPage from "./pages/CustomerLookupPage";
 import CustomerReports from "./pages/staff/CustomerReports";

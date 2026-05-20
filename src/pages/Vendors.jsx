@@ -3,7 +3,7 @@ import {
   getVendors,
   createVendor,
   deleteVendor,
-} from "../services/vendorService";
+} from "../services/api.js";
 
 function Vendors() {
   const [vendors, setVendors] = useState([]);

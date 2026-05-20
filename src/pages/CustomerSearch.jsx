@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { searchCustomers } from "../services/customerService";
+import { searchCustomers } from "../services/api.js";
 
 function CustomerSearch() {
   const [query, setQuery] = useState("");

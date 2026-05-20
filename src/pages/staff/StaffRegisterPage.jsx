@@ -1,11 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import "../styles/staff-register.css";
+import "../../styles/staff-register.css"
 
 const API_BASE = "http://localhost:5285";
 
 function StaffRegisterPage() {
-    const [form, setForm] = useState({ fullName: "", phone: "", email: "" });
+    const [form, setForm] = useState({ fullName: "", phone: "", email: "", password: "" });
     const [vehicle, setVehicle] = useState({ vehicleNumber: "", brand: "", model: "" });
     const [addVehicle, setAddVehicle] = useState(false);
     const [result, setResult] = useState(null);
@@ -25,7 +25,7 @@ function StaffRegisterPage() {
             };
             const res = await axios.post(`${API_BASE}/api/customers/register`, payload);
             setResult(res.data);
-            setForm({ fullName: "", phone: "", email: "" });
+            setForm({ fullName: "", phone: "", email: "", password: "" });
             setVehicle({ vehicleNumber: "", brand: "", model: "" });
             setAddVehicle(false);
         } catch (err) {
@@ -65,6 +65,15 @@ function StaffRegisterPage() {
                     value={form.email}
                     onChange={set(setForm)}
                     placeholder="e.g. ram@mail.com"
+                    required
+                />
+                <label>Password</label>
+                <input
+                    name="password"
+                    type="password"
+                    value={form.password}
+                    onChange={set(setForm)}
+                    placeholder="Create customer password"
                     required
                 />
 
