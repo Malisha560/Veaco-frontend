@@ -1,18 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 * {
     box-sizing: border-box;
-    font-family: Inter, Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 html,
 body,
 #root {
     min-height: 100%;
+    width: 100%;
 }
 
 body {
     margin: 0;
+    overflow-x: hidden;
+
     background: #eef4ea;
     color: #1f2d20;
+}
+
+a {
+    text-decoration: none;
 }
 
 .app {
@@ -70,12 +79,16 @@ body {
 
 .sidebar a {
     display: block;
-    text-decoration: none;
     color: #5f6f5d;
+
     padding: 12px 14px;
     margin-bottom: 7px;
+
     border-radius: 18px;
+
     font-size: 14px;
+
+    transition: 0.2s ease;
 }
 
 .sidebar a:hover {
@@ -111,6 +124,7 @@ body {
     background: #dbe8d4;
     color: #1f3b24;
 }
+
 .content {
     flex: 1;
 
@@ -121,7 +135,6 @@ body {
     min-height: 100vh;
 }
 
-/* General page defaults */
 section {
     max-width: 1200px;
 }
@@ -140,25 +153,23 @@ p {
 
 input,
 select,
-textarea {
-    font-family: inherit;
-}
-
+textarea,
 button {
     font-family: inherit;
 }
 
-/* Error */
 .error {
     margin-top: 15px;
     padding: 10px;
+
     background: #fee2e2;
     color: #b91c1c;
+
     border-radius: 10px;
+
     max-width: 600px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .app {
         flex-direction: column;
@@ -167,9 +178,12 @@ button {
     .sidebar {
         width: 100%;
         min-height: auto;
+        position: relative;
+        height: auto;
     }
 
     .content {
+        margin-left: 0;
         padding: 24px;
     }
 }

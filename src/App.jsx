@@ -3,11 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 
+import Sidebar from "./Sidebar";
+
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
-
-
-import Sidebar from "./Sidebar";
 
 import StaffRegisterPage from "./pages/staff/StaffRegisterPage";
 import SalesInvoicePage from "./pages/SalesInvoicePage";
@@ -15,6 +14,7 @@ import CustomerLookupPage from "./pages/CustomerLookupPage";
 import CustomerReports from "./pages/staff/CustomerReports";
 
 import SelfRegisterPage from "./pages/SelfRegisterPage";
+
 import ManageProfilePage from "./pages/customer/ManageProfilePage";
 import BookAppointmentPage from "./pages/customer/BookAppointmentPage";
 import PartRequestPage from "./pages/customer/PartRequestPage";
@@ -23,6 +23,7 @@ import HistoryPage from "./pages/customer/HistoryPage";
 
 import Vendors from "./pages/Vendors";
 import CustomerSearch from "./pages/CustomerSearch";
+
 import "./index.css";
 
 function DashboardLayout({ children }) {
@@ -39,13 +40,13 @@ function App() {
         <BrowserRouter>
             <Routes>
 
-                {/* Public pages */}
+                {/* Public Pages */}
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/customer-register" element={<SelfRegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
-                
+                <Route path="/customer-register" element={<SelfRegisterPage />} />
 
-                {/* Staff pages */}
+                {/* STAFF ROUTES */}
+
                 <Route
                     path="/staff/register-customer"
                     element={
@@ -72,6 +73,7 @@ function App() {
                         </DashboardLayout>
                     }
                 />
+
                 <Route
                     path="/staff/customer-reports"
                     element={
@@ -80,6 +82,7 @@ function App() {
                         </DashboardLayout>
                     }
                 />
+
                 <Route
                     path="/staff/customer-search"
                     element={
@@ -89,7 +92,8 @@ function App() {
                     }
                 />
 
-                {/* Customer pages */}
+                {/* CUSTOMER ROUTES */}
+
                 <Route
                     path="/customer/manage-profile"
                     element={
@@ -135,7 +139,8 @@ function App() {
                     }
                 />
 
-                {/* Admin */}
+                {/* ADMIN ROUTES */}
+
                 <Route
                     path="/admin"
                     element={
@@ -144,6 +149,7 @@ function App() {
                         </ProtectedAdminRoute>
                     }
                 />
+
                 <Route
                     path="/admin/vendors"
                     element={
@@ -153,6 +159,7 @@ function App() {
                     }
                 />
 
+                {/* FALLBACK */}
                 <Route path="*" element={<Navigate to="/" />} />
 
             </Routes>

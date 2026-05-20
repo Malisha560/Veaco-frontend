@@ -1,4 +1,10 @@
+import axios from "axios";
+
 const BASE_URL = "http://localhost:5285/api";
+
+const api = axios.create({
+    baseURL: BASE_URL,
+});
 
 // ---------- AUTH ----------
 export const loginUser = async (data) => {
@@ -97,3 +103,40 @@ export const deleteVendor = async (id) => {
 
     return res.json();
 };
+
+// ---------- ADMIN REPORTS ----------
+export const getDailyReport = (date) =>
+    api.get(`/admin/reports/daily?date=${date}`);
+
+export const getMonthlyReport = (year, month) =>
+    api.get(`/admin/reports/monthly?year=${year}&month=${month}`);
+
+export const getYearlyReport = (year) =>
+    api.get(`/admin/reports/yearly?year=${year}`);
+
+export const getReportSummary = () =>
+    api.get("/admin/reports/summary");
+
+export const getNotificationSummary = () =>
+    api.get("/notifications/summary");
+
+// ---------- STAFF MANAGEMENT ----------
+export const getAllStaff = () =>
+    api.get("/admin/staff");
+
+export const registerStaff = (data) =>
+    api.post("/admin/staff/register", data);
+
+export const getStaff = () =>
+    api.get("/admin/staff");
+
+export const updateStaffRole = (id, role) =>
+    api.put(`/admin/staff/${id}/role`, { role });
+
+export const updateStaff = (id, data) =>
+    api.put(`/admin/staff/${id}`, data);
+
+export const deleteStaff = (id) =>
+    api.delete(`/admin/staff/${id}`);
+
+export default api;

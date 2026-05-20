@@ -1,0 +1,229 @@
+/* Reports Page — matches dashboard aesthetic */
+
+.reports-page {
+    padding: 28px 34px;
+    background: #F5F7F2;
+    min-height: 100vh;
+}
+
+.reports-header {
+    margin-bottom: 36px;
+}
+
+.reports-date {
+    font-size: 14px;
+    color: #7B8576;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.reports-header h1 {
+    font-size: 30px;
+    color: #18230F;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.reports-subtitle {
+    font-size: 15px;
+    color: #5F6B57;
+    font-weight: 500;
+}
+
+/* Summary Cards */
+.reports-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px 60px;
+    margin-bottom: 40px;
+}
+
+.report-stat-card span {
+    font-size: 14px;
+    color: #667061;
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 500;
+}
+
+.report-stat-card h2 {
+    font-size: 32px;
+    color: #18230F;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.report-stat-card p {
+    color: #6F7A69;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Controls */
+.reports-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.reports-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.report-tab {
+    padding: 10px 22px;
+    border: 1.5px solid #D4D9CF;
+    background: transparent;
+    color: #5F6B57;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.2s;
+}
+
+.report-tab.active,
+.report-tab:hover {
+    background: #18230F;
+    color: white;
+    border-color: #18230F;
+}
+
+.reports-filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.report-input {
+    height: 44px;
+    padding: 0 16px;
+    border: 1.5px solid #D4D9CF;
+    border-radius: 12px;
+    background: #EEF2EA;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    color: #18230F;
+}
+
+.report-input:focus {
+    border-color: #5B7C52;
+}
+
+.report-generate-btn {
+    height: 44px;
+    padding: 0 24px;
+    background: #18230F;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background 0.2s;
+}
+
+.report-generate-btn:hover {
+    background: #2d3d1f;
+}
+
+.report-generate-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.report-error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Totals */
+.report-totals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 36px;
+}
+
+.report-total-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 24px;
+}
+
+.report-total-card span {
+    font-size: 13px;
+    color: #7B8576;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.report-total-card h2 {
+    font-size: 24px;
+    color: #18230F;
+    font-weight: 700;
+}
+
+/* Table */
+.report-table-wrap {
+    margin-bottom: 32px;
+}
+
+.report-table-wrap h3 {
+    font-size: 18px;
+    color: #18230F;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.report-table th {
+    background: #18230F;
+    color: white;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.report-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #E4E8DF;
+    font-size: 14px;
+    color: #18230F;
+}
+
+.report-table tr:last-child td {
+    border-bottom: none;
+}
+
+.report-table tr:hover td {
+    background: #F5F7F2;
+}
+
+.report-empty {
+    text-align: center;
+    color: #7B8576;
+    padding: 40px;
+    font-size: 15px;
+}
