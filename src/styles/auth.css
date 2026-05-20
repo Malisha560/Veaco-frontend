@@ -1,0 +1,125 @@
+.auth-page {
+    min-height: 100vh;
+    background: #f6fbf2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.auth-card {
+    width: 420px;
+    background: #fbfff8;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 8px 24px rgba(55, 75, 55, 0.08);
+}
+
+.auth-card h1 {
+    margin: 0 0 10px;
+    font-size: 32px;
+    color: #1f2d20;
+}
+
+.auth-card p {
+    color: #6f7d6c;
+    margin-bottom: 24px;
+}
+
+.auth-card label {
+    display: block;
+    margin: 16px 0 8px;
+    font-weight: 600;
+    color: #536250;
+}
+
+.auth-card input {
+    width: 100%;
+    border: none;
+    background: #e8f1e3;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+}
+
+.auth-card button {
+    margin-top: 24px;
+    width: 100%;
+    border: none;
+    background: #638d63;
+    color: white;
+    padding: 15px;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-card button:hover {
+    background: #557c55;
+}
+
+.auth-error {
+    margin-top: 16px;
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 12px;
+    border-radius: 14px;
+}
+
+.auth-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-link a {
+    color: #4f7c54;
+    font-weight: 700;
+}
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    text-decoration: none;
+
+    color: #5b6a5a;
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 24px;
+
+    transition: 0.2s ease;
+}
+
+.back-home-btn:hover {
+    color: #355e3b;
+}
+
+.login-password-field {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.login-password-field input {
+    flex: 1;
+}
+
+.login-password-toggle {
+    width: 90px !important;
+    height: 52px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    border-radius: 16px;
+    background: #dfeadb;
+    color: #2f5537;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-password-toggle:hover {
+    background: #d4e4ce;
+}

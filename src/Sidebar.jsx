@@ -1,32 +1,70 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "./assets/logo.png";
 
 function Sidebar() {
+    const role = localStorage.getItem("role");
+    const navigate = useNavigate();
+
+    const staffPages = [
+        { label: "Register Customer", path: "/staff/register-customer" },
+        { label: "Sales Invoice", path: "/staff/sales" },
+        { label: "Customer Lookup", path: "/staff/customer-lookup" },
+        { label: "Customer Reports", path: "/staff/customer-reports" },
+    ];
+
+    const customerPages = [
+        { label: "Manage Profile", path: "/customer/manage-profile" },
+        { label: "Book Appointment", path: "/customer/book-appointment" },
+        { label: "Request Part", path: "/customer/part-request" },
+        { label: "Review Service", path: "/customer/service-review" },
+        { label: "My History", path: "/customer/history" },
+    ];
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("role");
+        localStorage.removeItem("customerId");
+        localStorage.removeItem("adminLoggedIn");
+
+        navigate("/login");
+    };
+
     return (
-        <div style={{
-            width: "220px",
-            background: "#0b1b35",
-            color: "white",
-            padding: "20px",
-            minHeight: "100vh"
-        }}>
-            <h2>Veaco</h2>
+        <aside className="sidebar">
+            <div className="brand">
+                <img src={logo} alt="Veaco logo" className="brand-logo" />
+            </div>
 
-            <Link to="/" style={linkStyle}>Sales Invoice</Link>
-            <Link to="/customer" style={linkStyle}>Customer Details</Link>
+            {role === "Staff" && (
+                <div className="nav-group">
+                    <p className="sidebar-label">Staff Portal</p>
+                    {staffPages.map((item) => (
+                        <Link key={item.path} to={item.path}>
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            )}
 
-            {/* Team members add links here */}
-        </div>
+            {role === "Customer" && (
+                <div className="nav-group">
+                    <p className="sidebar-label">Customer Portal</p>
+                    {customerPages.map((item) => (
+                        <Link key={item.path} to={item.path}>
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            )}
+
+            {(role === "Staff" || role === "Customer") && (
+                <button className="logout-btn" onClick={handleLogout}>
+                    Logout
+                </button>
+            )}
+        </aside>
     );
 }
-
-const linkStyle = {
-    display: "block",
-    margin: "10px 0",
-    padding: "10px",
-    background: "#2563eb",
-    color: "white",
-    textDecoration: "none",
-    borderRadius: "5px"
-};
 
 export default Sidebar;

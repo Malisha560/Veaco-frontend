@@ -1,7 +1,142 @@
-.sales-form {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.sales-page {
+    max-width: 1120px;
+}
+
+.sales-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 34px;
+}
+
+.sales-title small {
+    color: #6f7d6c;
+    font-size: 14px;
+}
+
+.sales-title h1 {
+    margin: 6px 0 0;
+    font-size: 32px;
+    color: #1f2d20;
+}
+
+.sales-search {
+    background: #e7f0e2;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 28px;
+    width: 300px;
+}
+
+.sales-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 38px;
+}
+
+.stat-card {
+    background: #fbfff8;
+    padding: 26px;
+    border-radius: 28px;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #5f6f5d;
+}
+
+.stat-card h2 {
+    margin: 14px 0 6px;
+    font-size: 32px;
+}
+
+.sales-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 34px;
+}
+
+.sales-form-card,
+.invoice-result,
+.invoice-table-card {
+    background: #fbfff8;
+    padding: 26px;
+    border-radius: 24px;
+}
+
+.sales-form-card h2,
+.invoice-table-card h2 {
+    margin-top: 0;
+}
+
+.sales-form-card label {
+    display: block;
+    margin: 18px 0 8px;
+    color: #596859;
+    font-size: 14px;
+}
+
+.sales-form-card input {
+    width: 100%;
+    border: none;
+    background: #e8f1e3;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+}
+
+.sales-form-card button {
+    margin-top: 22px;
+    width: 100%;
+    border: none;
+    background: #638d63;
+    color: white;
+    padding: 15px;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sales-form-card button:hover {
+    background: #557c55;
+}
+
+.message {
+    margin-top: 14px;
+    color: #5d6d5a;
+}
+
+.discount-note {
+    background: #e7f3e4;
+    color: #2f6f3a;
+    padding: 12px;
+    border-radius: 16px;
+    margin-top: 12px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-table th {
+    text-align: left;
+    color: #7b8878;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding-bottom: 16px;
+}
+
+.invoice-table td {
+    padding: 16px 0;
+    border-top: 1px solid #e3eadf;
+}
+
+@media (max-width: 900px) {
+    .sales-grid,
+    .sales-stats {
+        grid-template-columns: 1fr;
+    }
 }

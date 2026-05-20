@@ -1,57 +1,58 @@
-.customer-page {
-    max-width: 1000px;
+.reports-page {
+    max-width: 1050px;
 }
 
-.customer-header {
+.reports-header {
     margin-bottom: 32px;
 }
 
-.customer-header small {
+.reports-header small {
     color: #6f7d6c;
     font-size: 14px;
 }
 
-.customer-header h1 {
+.reports-header h1 {
     margin: 6px 0 0;
     font-size: 32px;
     color: #1f2d20;
 }
 
-.customer-layout {
+.reports-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 340px 1fr;
     gap: 34px;
 }
 
-.customer-box {
+.report-card {
     background: #fbfff8;
     padding: 26px;
     border-radius: 24px;
 }
 
-.customer-box h2,
-.customer-box h3 {
+.report-card h2,
+.report-card h3 {
     margin-top: 0;
 }
 
-.customer-box label {
+.report-card label {
     display: block;
     margin: 18px 0 8px;
     color: #596859;
     font-size: 14px;
 }
 
-.customer-box input {
+.report-card select {
     width: 100%;
     border: none;
     background: #e8f1e3;
     padding: 14px 18px;
     border-radius: 18px;
     font-size: 15px;
+    margin-bottom: 8px;
 }
 
-.customer-box button {
-    margin-top: 22px;
+.report-card button {
+    margin-top: 18px;
     width: 100%;
     border: none;
     background: #638d63;
@@ -63,36 +64,23 @@
     cursor: pointer;
 }
 
-.customer-box button:hover {
+.report-card button:hover {
     background: #557c55;
 }
 
-.customer-detail-card,
-.history-card {
-    background: #fbfff8;
-    padding: 26px;
-    border-radius: 24px;
-    margin-bottom: 22px;
+.report-row {
+    border-top: 1px solid #e3eadf;
+    padding: 16px 0;
 }
 
-.customer-detail-card p,
-.history-card p {
+.report-row p {
+    margin: 6px 0;
     color: #4d5c4b;
 }
 
-.vehicle-chip {
-    display: inline-block;
-    background: #e7f0e2;
-    color: #466546;
-    padding: 8px 12px;
-    border-radius: 16px;
-    margin: 6px 6px 0 0;
-}
-
-.invoice-box {
-    border-top: 1px solid #e3eadf;
-    padding-top: 14px;
-    margin-top: 14px;
+.empty-text {
+    color: #7b8878;
+    margin-top: 18px;
 }
 
 .error {
@@ -101,7 +89,7 @@
 }
 
 @media (max-width: 900px) {
-    .customer-layout {
+    .reports-grid {
         grid-template-columns: 1fr;
     }
 }
