@@ -33,16 +33,50 @@
     color: #536250;
 }
 
-.auth-card input {
+.auth-card > input,
+.login-password-field input {
     width: 100%;
     border: none;
     background: #e8f1e3;
     padding: 14px 18px;
     border-radius: 18px;
     font-size: 15px;
+    outline: none;
 }
 
-.auth-card button {
+.auth-card > input:focus,
+.login-password-field input:focus {
+    background: white;
+    box-shadow: 0 0 0 2px #b8d1b4;
+}
+
+.login-password-field {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.login-password-field input {
+    flex: 1;
+}
+
+.login-password-toggle {
+    width: 85px;
+    height: 48px;
+    border: none;
+    border-radius: 16px;
+    background: #dfeadb;
+    color: #2f5537;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-password-toggle:hover {
+    background: #d4e4ce;
+}
+
+.auth-card > button[type="submit"] {
     margin-top: 24px;
     width: 100%;
     border: none;
@@ -55,7 +89,7 @@
     cursor: pointer;
 }
 
-.auth-card button:hover {
+.auth-card > button[type="submit"]:hover {
     background: #557c55;
 }
 
@@ -76,50 +110,17 @@
     color: #4f7c54;
     font-weight: 700;
 }
+
 .back-home-btn {
     display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
     text-decoration: none;
-
     color: #5b6a5a;
     font-size: 14px;
     font-weight: 600;
-
     margin-bottom: 24px;
-
     transition: 0.2s ease;
 }
 
 .back-home-btn:hover {
     color: #355e3b;
-}
-
-.login-password-field {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.login-password-field input {
-    flex: 1;
-}
-
-.login-password-toggle {
-    width: 90px !important;
-    height: 52px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none;
-    border-radius: 16px;
-    background: #dfeadb;
-    color: #2f5537;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.login-password-toggle:hover {
-    background: #d4e4ce;
 }
