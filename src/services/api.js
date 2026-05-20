@@ -1,70 +1,43 @@
-const BASE_URL = "/api";
+import axios from "axios";
 
-//  existing functions (keep these) 
-export const getCustomerDetails = (id) =>
-    fetch(`${BASE_URL}/customers/${id}/details`).then(res => res.json());
+const api = axios.create({
+    baseURL: "http://localhost:5285/api",
+});
 
-export const createInvoice = (data) =>
-    fetch(`${BASE_URL}/sales/create-invoice`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    }).then(res => res.json());
-
-//  Feature 1: Financial Reports 
-
-// Get daily report for a specific date e.g. "2026-04-29"
+/* REPORTS */
 export const getDailyReport = (date) =>
-    fetch(`${BASE_URL}/admin/reports/daily?date=${date}`).then(res => res.json());
+    api.get(`/admin/reports/daily?date=${date}`);
 
-// Get monthly report for a year and month e.g. year=2026, month=4
 export const getMonthlyReport = (year, month) =>
-    fetch(`${BASE_URL}/admin/reports/monthly?year=${year}&month=${month}`).then(res => res.json());
+    api.get(`/admin/reports/monthly?year=${year}&month=${month}`);
 
-// Get yearly report for a specific year e.g. 2026
 export const getYearlyReport = (year) =>
-    fetch(`${BASE_URL}/admin/reports/yearly?year=${year}`).then(res => res.json());
+    api.get(`/admin/reports/yearly?year=${year}`);
 
-// Get a quick summary of today, this month, and this year
+/* DASHBOARD */
 export const getReportSummary = () =>
-    fetch(`${BASE_URL}/admin/reports/summary`).then(res => res.json());
+    api.get("/admin/reports/summary");
 
-//  Feature 2: Staff Management 
+export const getNotificationSummary = () =>
+    api.get("/notifications/summary");
 
-// Get all staff members
 export const getAllStaff = () =>
-    fetch(`${BASE_URL}/admin/staff`).then(res => res.json());
+    api.get("/admin/staff");
+/* STAFF */
 
-// Get one staff member by their ID
-export const getStaffById = (id) =>
-    fetch(`${BASE_URL}/admin/staff/${id}`).then(res => res.json());
-
-// Register a new staff member
 export const registerStaff = (data) =>
-    fetch(`${BASE_URL}/admin/staff/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    }).then(res => res.json());
+    api.post("/admin/staff/register", data);
 
-// Update a staff member's full details
-export const updateStaff = (id, data) =>
-    fetch(`${BASE_URL}/admin/staff/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    }).then(res => res.json());
+export const getStaff = () =>
+    api.get("/admin/staff");
 
-// Update only the role of a staff member
 export const updateStaffRole = (id, role) =>
-    fetch(`${BASE_URL}/admin/staff/${id}/role`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ role })
-    }).then(res => res.json());
+    api.put(`/admin/staff/${id}/role`, { role });
 
-// Delete a staff member
+export const updateStaff = (id, data) =>
+    api.put(`/admin/staff/${id}`, data);
+
 export const deleteStaff = (id) =>
-    fetch(`${BASE_URL}/admin/staff/${id}`, {
-        method: "DELETE"
-    }).then(res => res.json());
+    api.delete(`/admin/staff/${id}`);
+
+export default api;

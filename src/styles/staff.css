@@ -1,162 +1,166 @@
-/* Staff Management Page Styles */
+/* Staff Management Page — matches dashboard aesthetic */
 
 .staff-page {
-    padding: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
-    font-family: 'Segoe UI', sans-serif;
+    padding: 28px 34px;
+    background: #F5F7F2;
+    min-height: 100vh;
 }
 
 .staff-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+    align-items: flex-start;
+    margin-bottom: 36px;
+}
+
+.staff-date {
+    font-size: 14px;
+    color: #7B8576;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .staff-header h1 {
-    font-size: 28px;
-    color: #0b1b35;
-    margin: 0 0 5px 0;
+    font-size: 30px;
+    color: #18230F;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
 }
 
-.staff-header p {
-    color: #666;
-    margin: 0;
+.staff-subtitle {
+    font-size: 15px;
+    color: #5F6B57;
+    font-weight: 500;
 }
 
-.register-btn {
-    padding: 11px 24px;
-    background: #2563eb;
+.staff-register-btn {
+    height: 48px;
+    padding: 0 24px;
+    background: #18230F;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 14px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
     transition: background 0.2s;
+    margin-top: 8px;
 }
 
-.register-btn:hover {
-    background: #1d4ed8;
-}
+.staff-register-btn:hover { background: #2d3d1f; }
 
 /* Messages */
-.success-msg {
+.staff-success {
     background: #dcfce7;
     color: #166534;
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
     font-size: 14px;
+    font-weight: 500;
 }
 
-.error-msg {
+.staff-error {
     background: #fee2e2;
     color: #b91c1c;
     padding: 12px 16px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
     font-size: 14px;
+    font-weight: 500;
 }
 
-/* Form Card */
+/* Form */
 .staff-form-card {
-    background: #f8faff;
-    border: 1.5px solid #dbeafe;
-    border-radius: 12px;
-    padding: 24px;
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
     margin-bottom: 28px;
 }
 
-.staff-form-card h2 {
+.staff-form-card h3 {
     font-size: 18px;
-    color: #0b1b35;
-    margin: 0 0 20px 0;
+    color: #18230F;
+    font-weight: 700;
+    margin-bottom: 24px;
 }
 
-.form-row {
+.staff-form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 18px;
+    margin-bottom: 20px;
 }
 
-.form-group {
+.staff-form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
-.form-group label {
+.staff-form-group label {
     font-size: 13px;
     font-weight: 600;
-    color: #374151;
+    color: #5F6B57;
 }
 
-.form-group input,
-.form-group select {
-    padding: 10px 14px;
-    border: 1.5px solid #ddd;
-    border-radius: 8px;
+.staff-form-group input,
+.staff-form-group select {
+    height: 44px;
+    padding: 0 14px;
+    border: 1.5px solid #D4D9CF;
+    border-radius: 10px;
+    background: #EEF2EA;
     font-size: 14px;
+    font-family: "Poppins", sans-serif;
     outline: none;
-    background: white;
+    color: #18230F;
     transition: border 0.2s;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #2563eb;
+.staff-form-group input:focus,
+.staff-form-group select:focus {
+    border-color: #5B7C52;
 }
 
-.submit-btn {
-    padding: 11px 28px;
-    background: #0b1b35;
+.staff-submit-btn {
+    height: 44px;
+    padding: 0 24px;
+    background: #18230F;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
     transition: background 0.2s;
 }
 
-.submit-btn:hover {
-    background: #1e3a5f;
-}
+.staff-submit-btn:hover { background: #2d3d1f; }
+.staff-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.cancel-btn {
-    padding: 11px 24px;
-    background: white;
-    color: #333;
-    border: 1.5px solid #ddd;
-    border-radius: 8px;
+.staff-cancel-btn {
+    height: 44px;
+    padding: 0 20px;
+    background: transparent;
+    color: #5F6B57;
+    border: 1.5px solid #D4D9CF;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    margin-left: 10px;
+    font-family: "Poppins", sans-serif;
 }
 
-.cancel-btn:hover {
-    background: #f5f5f5;
-}
+.staff-cancel-btn:hover { background: #EEF2EA; }
 
-.form-actions {
-    display: flex;
-    align-items: center;
-}
-
-/* Staff Table */
+/* Table */
 .staff-table-wrap {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -166,37 +170,32 @@
 }
 
 .staff-table th {
-    background: #0b1b35;
+    background: #18230F;
     color: white;
-    padding: 13px 16px;
+    padding: 14px 18px;
     text-align: left;
     font-size: 13px;
     font-weight: 600;
 }
 
 .staff-table td {
-    padding: 13px 16px;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 18px;
+    border-bottom: 1px solid #E4E8DF;
     font-size: 14px;
-    color: #333;
+    color: #18230F;
 }
 
-.staff-table tr:last-child td {
-    border-bottom: none;
-}
+.staff-table tr:last-child td { border-bottom: none; }
+.staff-table tr:hover td { background: #F5F7F2; }
 
-.staff-table tr:hover td {
-    background: #f8faff;
-}
-
-.empty-row {
+.staff-empty {
     text-align: center;
-    color: #999;
+    color: #7B8576;
     padding: 40px !important;
 }
 
 /* Badges */
-.role-badge {
+.staff-role-badge {
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 12px;
@@ -204,65 +203,48 @@
     text-transform: uppercase;
 }
 
-.role-badge.admin {
-    background: #fef3c7;
-    color: #92400e;
-}
+.staff-role-badge.admin { background: #fef3c7; color: #92400e; }
+.staff-role-badge.staff { background: #EEF2EA; color: #3d5c35; }
 
-.role-badge.staff {
-    background: #dbeafe;
-    color: #1e40af;
-}
-
-.status-badge {
+.staff-status-badge {
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
 }
 
-.status-badge.active {
-    background: #dcfce7;
-    color: #166534;
-}
+.staff-status-badge.active { background: #dcfce7; color: #166534; }
+.staff-status-badge.inactive { background: #fee2e2; color: #991b1b; }
 
-.status-badge.inactive {
-    background: #fee2e2;
-    color: #991b1b;
-}
+/* Actions */
+.staff-actions { display: flex; gap: 8px; }
 
-/* Action Buttons */
-.action-btns {
-    display: flex;
-    gap: 8px;
-}
-
-.edit-btn {
-    padding: 6px 14px;
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
+.staff-edit-btn {
+    padding: 6px 16px;
+    background: transparent;
+    color: #5B7C52;
+    border: 1.5px solid #5B7C52;
+    border-radius: 8px;
     font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.2s;
 }
 
-.edit-btn:hover {
-    background: #1d4ed8;
-}
+.staff-edit-btn:hover { background: #5B7C52; color: white; }
 
-.delete-btn {
-    padding: 6px 14px;
-    background: #ef4444;
-    color: white;
-    border: none;
-    border-radius: 6px;
+.staff-delete-btn {
+    padding: 6px 16px;
+    background: transparent;
+    color: #b91c1c;
+    border: 1.5px solid #b91c1c;
+    border-radius: 8px;
     font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.2s;
 }
 
-.delete-btn:hover {
-    background: #dc2626;
-}
+.staff-delete-btn:hover { background: #b91c1c; color: white; }
